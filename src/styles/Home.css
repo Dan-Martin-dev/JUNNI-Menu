@@ -40,7 +40,7 @@ nav button {
     padding: 0.25em;
     display: flex;
     flex-direction: column;
-    gap: 0.25em;
+    gap: 0.15em;
     perspective: 1000px;
     background-color: black;
     position: relative;
@@ -50,7 +50,7 @@ nav button {
 .row {
     flex: 1;
     display: flex;
-    gap: 0.25em;
+    gap: 0.15em;
 }
 
 .tile {
@@ -87,10 +87,10 @@ nav button {
 }
 
 .tile-front::before{
-    background-image: url('public/img/kapan.jpg');
+    background-image: url('/home/vare/project/landings_1/JUNNI_MENU/public/img/kapan.jpg');
 }
 .tile-back::before{
-    background-image: url('public/img/1920.jpg');
+    background-image: url('/home/vare/project/landings_1/JUNNI_MENU/public/img/1920.jpg');
 }
 .blocks-container{
     position:fixed;
