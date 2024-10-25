@@ -26,6 +26,9 @@ const TileBoard: React.FC = () => {
   
   return (
     <div className="board">
+        <a className='grid-button absolute text-white top-8 left-8 no-underline uppercase text-3xl z-10 bg-black' href="#">CODEGRID</a>
+        <button className='grid-button absolute top-8 right-8 border-none outline-none text-white bg-black rounded-sm z-10' id='flipButton'>Flip tiles</button>
+
       {Array.from({ length: ROWS }, (_, rowIndex) => (
         <div key={rowIndex} className="row">
           {Array.from({ length: COLS }, (_, colIndex) => {
