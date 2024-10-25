@@ -92,12 +92,12 @@ html,body{
 }
 
 .tile-front::before{
-    background-image: url('/home/vare/project/landings_1/JUNNI_MENU/public/img/1920.jpg');
+    background-image: url('/img/1920.jpg');
 }
 
 
 .tile-back::before{
-    background-image: url('/home/vare/project/landings_1/JUNNI_MENU/public/img/kapan.jpg');
+    background-image: url('/img/kapan.jpg');
 }
 
 .blocks-container{
