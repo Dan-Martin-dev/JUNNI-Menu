@@ -39,7 +39,6 @@ html,body{
     perspective: 1000px;
     background-color: black;
     position: relative;
-    z-index: 1;
 }
 
 .row {
@@ -80,7 +79,7 @@ html,body{
 }
 
 .tile-front::before,
-.tile-back ::before {
+.tile-back::before {
     content: "";
     position: absolute;
     top: 0;
@@ -95,6 +94,7 @@ html,body{
 .tile-front::before{
     background-image: url('/home/vare/project/landings_1/JUNNI_MENU/public/img/1920.jpg');
 }
+
 
 .tile-back::before{
     background-image: url('/home/vare/project/landings_1/JUNNI_MENU/public/img/kapan.jpg');
