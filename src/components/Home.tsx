@@ -12,6 +12,7 @@ const TileBoard: React.FC = () => {
 
   const [flippedTiles, setFlippedTiles] = useState<{ [key: string]: boolean }>({});
 
+  // if i switch the booleans from true to false and false to true when i click the flipAllTiles button my problem will be fix.
   const handleMouseEnter = (rowIndex: number, colIndex: number) => {
     const tileKey = `${rowIndex}-${colIndex}`;
     setFlippedTiles((prev) => ({ ...prev, [tileKey]: true }));
@@ -19,9 +20,24 @@ const TileBoard: React.FC = () => {
     // Optionally remove the flipped class after a delay if needed
     setTimeout(() => {
       setFlippedTiles((prev) => ({ ...prev, [tileKey]: false }));
-    },250); // Delay for the flip effect duration
+    },250); 
   };  
 
+  const flipAllTiles = () => {
+    setFlippedTiles((prev) => {
+      const newFlippedTiles = {};
+      // Iterate over all possible tiles and flip their state
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const tileKey = `${row}-${col}`;
+          // Toggle the flipped state
+          newFlippedTiles[tileKey] = !prev[tileKey];
+        }
+      }
+      return newFlippedTiles;
+    });
+  };
+  
   return (
     <div className="board">
       <a
@@ -33,6 +49,7 @@ const TileBoard: React.FC = () => {
       <button
         className="grid-button absolute top-8 right-8 border-none outline-none text-pink-200 bg-black rounded-sm z-10"
         id="flipButton"
+        onClick={flipAllTiles} // Attach the flipAllTiles function to the button
       >
         FLIP
       </button>
