@@ -19,7 +19,7 @@ const TileBoard: React.FC = () => {
     // Optionally remove the flipped class after a delay if needed
     setTimeout(() => {
       setFlippedTiles((prev) => ({ ...prev, [tileKey]: false }));
-    },350); // Delay for the flip effect duration
+    },250); // Delay for the flip effect duration
   };  
 
   return (
