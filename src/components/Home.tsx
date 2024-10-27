@@ -10,17 +10,18 @@ const TileBoard: React.FC = () => {
   const ROWS = 6;
   const COLS = 6;
 
+  // Separate states for flipped and hovered tiles
   const [flippedTiles, setFlippedTiles] = useState<{ [key: string]: boolean }>({});
+  const [hoveredTiles, setHoveredTiles] = useState<{ [key: string]: boolean }>({});
 
-  // if i switch the booleans from true to false and false to true when i click the flipAllTiles button my problem will be fix.
   const handleMouseEnter = (rowIndex: number, colIndex: number) => {
     const tileKey = `${rowIndex}-${colIndex}`;
-    setFlippedTiles((prev) => ({ ...prev, [tileKey]: true }));
-
-    // Optionally remove the flipped class after a delay if needed
+    setHoveredTiles((prev) => ({ ...prev, [tileKey]: true }));
+    
+    // Optionally remove the hovered state after a delay if needed
     setTimeout(() => {
-      setFlippedTiles((prev) => ({ ...prev, [tileKey]: false }));
-    },250); 
+      setHoveredTiles((prev) => ({ ...prev, [tileKey]: false }));
+    }, 250); 
   };  
 
   const flipAllTiles = () => {
@@ -37,7 +38,7 @@ const TileBoard: React.FC = () => {
       return newFlippedTiles;
     });
   };
-  
+
   return (
     <div className="board">
       <a
@@ -60,10 +61,11 @@ const TileBoard: React.FC = () => {
           {Array.from({ length: COLS }, (_, colIndex) => {
             const tileKey = `${rowIndex}-${colIndex}`;
             const isFlipped = flippedTiles[tileKey];
+            const isHovered = hoveredTiles[tileKey];
 
             return (
               <div
-                className={`tile ${isFlipped ? "flip" : ""}`}
+                className={`tile ${isFlipped || isHovered ? "flip" : ""}`}
                 key={colIndex}
                 onMouseEnter={() => handleMouseEnter(rowIndex, colIndex)}
               >
