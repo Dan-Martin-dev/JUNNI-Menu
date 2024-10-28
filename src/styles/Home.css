@@ -135,3 +135,12 @@ html,body{
 .tile.flip {
     transform: rotateX(180deg);
 }
+
+
+
+@media (max-width: 768px) {
+    .tile-back::before,
+    .tile-front::before {
+        background-size: 300% 300%; /* Change size for small screens */
+    }
+}
