@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "/home/vare/project/landings_1/JUNNI_MENU/src/styles/Home.css"; // Assuming your styles are here
 
-interface Tile {
-  id: string;
-  flipped: boolean;
-}
 
 const TileBoard: React.FC = () => {
-  const ROWS = 6;
-  const COLS = 6;
+  const [ROWS, setRows] = useState(6);
+  const [COLS, setCols] = useState(6);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // Change this value based on your breakpoints
+        setRows(3);
+        setCols(3);
+      } else {
+        setRows(6);
+        setCols(6);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   // Separate states for flipped and hovered tiles
   const [flippedTiles, setFlippedTiles] = useState<{ [key: string]: boolean }>({});
   const [hoveredTiles, setHoveredTiles] = useState<{ [key: string]: boolean }>({});
@@ -26,7 +44,7 @@ const TileBoard: React.FC = () => {
 
   const flipAllTiles = () => {
     setFlippedTiles((prev) => {
-      const newFlippedTiles = {};
+      const newFlippedTiles: {[ key: string]: boolean} = {};
       // Iterate over all possible tiles and flip their state
       for (let row = 0; row < ROWS; row++) {
         for (let col = 0; col < COLS; col++) {

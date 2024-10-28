@@ -9,7 +9,7 @@ function App() {
   return (
     <> 
       <Header/>
-      <Router basename="/baseName">
+      <Router basename="/JUNNI-Menu">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/projects" element={<Projects/>} />
